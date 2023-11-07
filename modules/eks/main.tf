@@ -47,4 +47,5 @@ module "alb-controller" {
   cluster_name = module.eks.cluster_name
   cluster_region = var.cluster_region
   vpc_id = var.vpc_id
+  oidc_provider_arn = module.eks.oidc_provider_arn
 }
