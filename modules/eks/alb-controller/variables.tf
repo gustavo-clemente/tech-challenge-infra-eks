@@ -13,3 +13,8 @@ variable "cluster_name" {
   type = string
 }
 
+variable "oidc_provider_arn" {
+  description = "ARN do oidc provedor"
+  type = string
+}
+
