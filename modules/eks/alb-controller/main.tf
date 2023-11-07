@@ -58,7 +58,7 @@ resource "helm_release" "alb-controller" {
 
   set {
     name  = "serviceAccount.name"
-    value = kubernetes_service_account.service-account.name
+    value = "aws-load-balancer-controller"
   }
 
   set {
