@@ -9,12 +9,13 @@ module "eks" {
   control_plane_subnet_ids = var.subnet_ids
   vpc_id = var.vpc_id
   cluster_addons = {
+    kube-proxy = {}
+    vpc-cni    = {}
     coredns = {
       configuration_values = jsonencode({
         computeType = "Fargate"
       })
     }
-
   }
 
   fargate_profiles = {
@@ -42,6 +43,16 @@ module "eks" {
 
 module "alb-controller" {
   source = "./alb-controller"
+  depends_on = [module.eks]
+
+  cluster_name = module.eks.cluster_name
+  cluster_region = var.cluster_region
+  vpc_id = var.vpc_id
+  oidc_provider_arn = module.eks.oidc_provider_arn
+}
+
+module "ack-controller" {
+  source = "./ack-controller"
   depends_on = [module.eks]
 
   cluster_name = module.eks.cluster_name

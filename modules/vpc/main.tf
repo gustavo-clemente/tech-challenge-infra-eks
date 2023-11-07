@@ -7,6 +7,7 @@ module "vpc" {
   azs                = ["us-west-2a", "us-west-2b"]
   public_subnets     = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnets    = ["10.0.3.0/24", "10.0.4.0/24"]
+  enable_nat_gateway = true
 
   private_subnet_tags = {
     "kubernetes.io/role/internal-elb" = "1"
