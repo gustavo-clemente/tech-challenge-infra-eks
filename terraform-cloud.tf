@@ -1,9 +1,9 @@
 terraform {
-  cloud {
-    organization = "gustavo-clemente"
+  # cloud {
+  #   organization = "gustavo-clemente"
 
-    workspaces {
-      name = "tech-challenge-infra-eks"
-    }
-  }
+  #   workspaces {
+  #     name = "tech-challenge-infra-eks"
+  #   }
+  # }
 }
